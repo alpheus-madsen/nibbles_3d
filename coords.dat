@@ -1,0 +1,25 @@
+# Coordinate Wireframe file
+
+# First we list the vertices, one per line.
+# Note that the order of these vertices are crucial!
+0 0 0             # origin
+150 0 0            # x-axis
+0 150 0            # y-axis
+0 0 150            # z-axis
+0 0 -150           # -z-axis
+0 -150 0           # -y-axis
+-150 0 0           # -x-axis
+end vertices      # each section needs a lowercase 'end'
+
+# Now we can add our edges:
+0 1 yellow        # x-axis
+0 2 red            # y-axis
+0 3 green        # z -axis
+0 4 black         # -z-axis
+0 5 black         # -y-axis
+0 6 black         # -x-axis
+end edges
+
+# There are no faces.
+end faces
+

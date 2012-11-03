@@ -1,0 +1,147 @@
+\documentclass[10pt]{article}
+\usepackage{graphics, verbatim, multicol}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{fullpage}
+
+\definecolor{gray}{rgb}{.4,.4,.4}
+
+\newcommand{\titleize}[1]{
+   \begin{center}
+       \Large \textsc{#1} \normalsize \\
+   \end{center}
+}
+
+\newcommand{\normaltitleize}[1]{\mbox{}\\ \textsc{#1} \normalsize}
+
+\newcommand{\headerstuff}{
+   \begin{center}
+   \textsc{\Large{Alpheus Madsen}}
+
+   \rule{1in}{.01in}
+
+   387 West 300 North BSMT \\
+
+   Logan, UT \ \ 84321  \\
+
+   (435)752-2829 \\
+
+   alpheus.madsen@juno.com
+
+   \rule{2in}{.01in}
+   \end{center}
+}
+
+\newcommand{\sectionline}{
+\begin{center}
+   \rule{1in}{.01in}
+\end{center}
+}
+
+\title{Initial Supplements to A Simple 3D Graphics Engine}
+\author{\headerstuff}
+\date{}
+
+\begin{document}
+\lstset{language=Python, basicstyle=\ttfamily\color{blue}, keywordstyle=\bf\color{blue}, stringstyle=\color{red}, commentstyle=\em\color{gray},
+showstringspaces=false,
+identifierstyle=\color{black},
+numbers=none, numberstyle=\tiny\color{gray}}
+
+%\maketitle
+\headerstuff
+
+\titleize{A Simple 3D Graphics Engine\\Written in Python and PyGame}
+
+\begin{center}
+   Tuesday, March 3, 2009.
+\end{center}
+
+\normaltitleize{Introduction.}  Several years ago I wrote a simple 3D graphics engine in Python and Allegro.  I wanted to grow that into a full-fledged game of some sort, but because of graduate studies, I had to put off working on this little program.  Now that I have completed my doctorate in mathematics, I have spent some time trying to decide what I wanted to do next.  I remembered this program, and how I liked the combination of linear algebra, computer graphics, and pretty pictures, and I decided that I should pursue computer graphics programming.
+
+As I began to look for work, I stumbled onto ``dual quaternions'' and I decided that I wanted to learn more about them.  Thus, I decided to dust off this program, implement dual quaternion math, and use it for a simple game.  In the month that I have done this, I have made much progress; this document is a sampling of the source code of my project.  Although I have corrected many bugs since then, this document only contains source code that represents major changes that I have made.
+
+Unlike my original engine, which used the Allegro library via PyAllegro Python bindings, this new engine uses the SDL game library, through PyGame Python bindings.  Although I liked PyAllegro, the project is currently slow and unstable, and I had problems getting it to work; thus I chose to use a more popular library.  The conversion process went surprisingly well!
+
+\normaltitleize{Progress on My Project.}  When I started my work on this engine, I decided to follow the suggestion of my wife and keep a journal of the progress I have made.  Thus, I will not detail the changes or future goals of my project here; those are provided in a separate document.  I will, however, provide a brief outline of what I have completed:
+\begin{itemize}
+   \item I wrote wireframe data for worm segments to be used in a Nibbles3D game;
+
+   \item I implemented dual quaternions, and wrote functions that would easily allow for arbitrary combinations of rotations and translations, and convert dual quaternions to matrices;
+
+   \item I implemented a cursor system that would allow me to use the mouse to manipulate the movements of my worms;
+
+   \item I separated wireframe data from position data, to minimize memory used;
+
+   \item I discovered and corrected some subtle camera bugs that, once corrected, allowed things to begin to work in a very intuitive way;
+
+   \item I added coordinate systems to the ``movable'' class, so that I could rotate objects (particularly cameras) by relative coordinates;
+
+   \item I created a ``worm'' class that combines segments and two separate cameras (one for debugging purposes) that will be used for creating worms.
+\end{itemize}
+
+\normaltitleize{Personal Remarks.}  As I have revived this project, it has in some ways annoyed me greatly!  Often, I couldn't stop thinking about the things I needed to do, even at times when I so desperately needed to sleep, or other times when I needed to do my work as a computer programmer for EV Source.  I simply wish that I had an infinite amount of time that would allow me to do everything I wanted with this project, and to fulfill all my other obligations to health, family, work, and whatever else I would like to do; at the very least, I wish that my friends and family could somehow box up extra time they had (a few minutes here and there) to send it to me.
+
+On the other hand, working with quaternions, especially dual quaternions, has opened up a new world to me.  Dual quaternions have a simplicity to them that you can't recognize until you really begin to work with them, and to use them in computer graphics especially.  If I do nothing more with my project, this alone was worth reviving it!
+
+%\newpage
+\sectionline
+
+\normaltitleize{``quat.py''.}  After converting my program to PyGame, the first thing I did with my project is implement dual quaternions; this was, after all, the reason I was inspired to revive this little program!  I decided that, rather than implement two classes (say, perhaps ``quat'' and ``dualquat''), that I would implement one class, and then test for special cases to determine where I could simplify multiplication or division.
+
+Perhaps it would be more efficient, computationally, to separate things into ``quat'' and ``dualquat'', and then adjust the code accordingly; for now, however, I like this implementation.
+
+\lstinputlisting{quat.py}
+
+% \newpage
+
+\sectionline
+
+\normaltitleize{``position.py''.}  When I started adding segments to my worm, I realized that I was repeatedly reading the same data from the hard drive and then putting it in position; to avoid roundoff error, I would leave the original position information unchanged!  This seemed to be a great waste of both computer memory and computer processes (it takes a lot of work loading files from the disk, just to put things in memory), so I decided to separate the wireframe data from the position data.
+
+\lstinputlisting{position.py}
+
+%\newpage
+
+\sectionline
+
+\normaltitleize{``wf\_data.py''.}  This reads the data that would be used by a ``position'' class; unlike my original ``wireframe'' class, this doesn't inherit from ``movable''; hence, a ``wf\_data'' object would have no position whatsoever.  It's up to ``position'' to place it, and then to draw it when the time comes.
+
+\lstinputlisting{wf_data.py}
+
+% \newpage
+
+\sectionline
+
+\normaltitleize{``worm.py''.}  Since I would like to draw 3D worms that move around gobbling up numbers, I needed a class that would combine the segments and cameras associated with each worm; this class also includes the functions that changes the direction of the worm or its ``fly camera'' (a camera meant to move independently of the worm for debugging purposes).  Since I had to debug the camera, these functions are still very much works in progress.
+
+\lstinputlisting{worm.py}
+
+% \newpage
+
+\sectionline
+
+\normaltitleize{``wormsegments.py''}  The main program that draws and controls the worm.  This file draws the cursor and the ``cursor crosshairs'', and reads movements and clicks from the mouse, (and to a lesser extent, the keyboard), and then moves the camera appropriately.  The worm's ``nose camera'' moves click-by-click (I'm not yet to the point where I want to move forward automatically), while the ``fly camera'' moves in a continuous manner.
+
+\lstinputlisting{latex-wormsegments.py}
+
+% \newpage
+
+\sectionline
+
+\normaltitleize{A note on ``camera.py''.}  Although I have made extensive changes to my camera, I have chosen not to include it here; nonetheless, I wanted to make a brief comment on this file.  The changes to my camera came mostly as a result of discovering that I had reversed my $x$-axis and my $z$-axis in my definitions in ``vertex.py''.  Thus, most of the changes to this class were the result of adjusting constants and removing negative signs.  I also moved Fwd, Left and Up vectors to my ``movable'' class, so that I could use them for keeping track of orientation of objects in general.
+
+I probably still have work to do to (especially with the functions) to make sure I could do everything with my camera that I would hope to do!
+
+%\lstinputlisting{camera.py}
+% \newpage
+
+\sectionline
+
+\normaltitleize{``worm\_head\_tail.dat''.}  To implement my worm, I need a head (which could be a tail, too), a middle segment, and an elbow.  This is one of the files I use to create my worm; for incompleteness, I have chosen to leave the other two out of this document.
+
+\lstinputlisting{worm_head_tail.dat}
+
+% \newpage
+
+\end{document}

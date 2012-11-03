@@ -1,0 +1,91 @@
+# Worm Head or Tail Segment Wireframe file
+
+# First we list the vertices, one per line.
+# Note that the order of these vertices are crucial!
+-25 -50 -50	# v0
+ 25 -50 -50
+ 50 -25 -50
+ 50  25 -50	# v3
+ 25  50 -50	# v4
+-25  50 -50
+-50  25 -50
+-50 -25 -50	# v7
+
+-25 -50  25	# v8
+ 25 -50  25
+ 50 -25  25
+ 50  25  25	# v11
+ 25  50  25	# v12
+-25  50  25
+-50  25  25
+-50 -25  25	# v15
+
+-25 -25  50	# v16
+ 25 -25  50
+ 25  25  50
+-25  25  50	# v19
+end vertices
+
+# Now we can add our edges:
+ 0  1			blue
+ 1  2			blue
+ 2  3			blue
+ 3  4			blue
+ 4  5			blue
+ 5  6			blue
+ 6  7			blue
+ 7  0			blue		# Front end
+
+ 8   9		blue
+ 9  10		blue
+10 11		blue
+11 12		blue
+12 13		blue
+13 14		blue
+14 15		blue
+15  8		blue		# Back end
+
+ 0  8			blue
+ 1  9			blue
+ 2 10		blue
+ 3 11		blue
+ 4 12		blue
+ 5 13		blue
+ 6 14		blue
+ 7 15		blue		# All the sides
+
+16 17		blue
+17 18		blue
+18 19		blue
+19 16		blue
+15 16		blue
+ 8 16		blue
+ 9 17		blue
+10 17		blue
+11 18		blue
+12 18		blue
+13 19		blue
+14 19		blue		# The nose of the worm
+end edges
+
+# This segment has only side faces.
+# Note that some day I might want to add "normals"
+ 0  1  9  8		lightblue
+ 1  2 10  9	lightblue
+ 2  3 11 10	lightblue
+ 3  4 12 11	lightblue
+ 4  5 13 12	lightblue
+ 5  6 14 13	lightblue
+ 6  7 15 14	lightblue
+ 7  0  8 15	lightblue	# The sides of the worm
+
+15  8 16		lightblue
+ 8  9 17 16	lightblue
+ 9 10 17		lightblue
+10 11 18 17	lightblue
+11 12 18		lightblue
+12 13 19 18	lightblue
+13 14 19		lightblue
+14 15 16 19	lightblue
+16 17 18 19	lightblue
+end faces

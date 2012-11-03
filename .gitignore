@@ -1,0 +1,6 @@
+*.pdf
+byteplay.py
+*.pyc
+*.aux
+*.log
+*~

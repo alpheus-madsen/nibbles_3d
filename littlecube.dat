@@ -1,0 +1,48 @@
+# Cube Wireframe file
+
+# First we list the vertices, one per line.
+# Note that the order of these vertices are crucial!
+-10  -10  -10 # v0  # Note that all comments begin with
+-10   10  -10       # a '#' and then go to the end of the line
+ 10   10  -10
+ 10  -10  -10
+-10  -10   10 # v4
+-10   10   10
+ 10   10   10
+ 10  -10   10 # v8
+end vertices      # each section needs a lowercase 'end'
+
+# Now we can add our edges:
+0 1 blue  # e0    # edges don't need any particular order...
+1 5 blue  # e5    # These labels were provided to help me create
+5 4 blue  # e8    # this file:  since I created it by hand, I
+4 0 blue  # e4    # inputed this information from a hand-drawn
+                  # picture of a cube, with labeled vertices,
+1 2 green         # edges and faces.
+2 6 green
+6 5 green
+6 7 green
+
+2 3 green
+0 3 green
+4 7 green
+3 7 green
+end edges
+
+# finally we add some faces, noting that each face needs to
+# be on a line by itself...
+0 1 5 4 blue  # f0
+1 2 6 5 red
+0 1 2 3 red
+# 0 3 7 4 red
+4 5 6 7 red
+# 3 2 6 7 red
+end faces
+
+At this point, there's nothing else for my wireframe class to
+read, so I could write anything here....
+
+For example, I can use this space to point out that by
+commenting out the two faces that I did, they shouldn't
+appear when I finally draw my cube.
+

@@ -1,0 +1,99 @@
+# Worm Elbow Segment Wireframe file
+
+# First we list the vertices, one per line.
+# Note that the order of these vertices are crucial!
+-25 -50 -50	# v0
+ 25 -50 -50
+ 50 -25 -50
+ 50  25 -50	# v3
+ 25  50 -50	# v4
+-25  50 -50
+-50  25 -50
+-50 -25 -50	# v7		# Front of elbow
+
+ 50 -50 -25	# v8
+ 50 -50  25
+ 50 -25  50
+ 50  25  50
+ 50  50  25
+ 50  50 -25	# v13	# Right hand side
+
+ 25 -50  50	# v14
+-25 -50  50
+-50 -25  50
+-50  25  50
+-25  50  50
+ 25  50  50	# v19	# Back of elbow
+
+-50 -50  25	# v20
+-50 -50 -25
+-50  50 -25
+-50  50  25	# v23	# Left hand side
+end vertices
+
+# Now we can add our edges:
+ 0  1			blue
+ 1  2			blue
+ 2  3			blue
+ 3  4			blue
+ 4  5			blue
+ 5  6			blue
+ 6  7			blue
+ 7  0			blue		# Front end
+
+ 2    8		blue
+ 8    9		blue
+ 9  10		blue
+10 11		blue
+11 12		blue
+12 13		blue
+13  3		blue		# Right hand side
+
+10 14		blue
+14 15		blue
+15 16		blue
+16 17		blue
+17 18		blue
+18 19		blue
+19 11		blue		# Back end
+
+16 20		blue
+20 21		blue
+21  7		blue
+ 6 22		blue
+22 23		blue
+23 17		blue		# Left hand side
+
+ 4  13		blue
+12 19		blue
+18 23		blue
+22  5		blue		# Top of elbow
+
+ 1   8		blue
+ 9 14		blue
+15 20		blue
+21  0		blue		# Bottom of elbow
+end edges
+
+# This segment has only side faces.
+# Note that some day I might want to add "normals"
+
+
+ #  Should I triangulize these?
+0 1 2 3 4 5 6 7			lightblue		# Front
+2 8 9 10 11 12 13 3		lightblue		# Right hand side
+10 14 15 16 17 18 19 11	lightblue		# Back
+16 20 21 7 6 22 23 17	lightblue		# Left hand side
+0 1 8 9 14 15 20 21		lightblue		# Bottom
+5 4 13 12 19 18 23 22	lightblue		# Top
+
+5 6 22				lightblue		# Top triangles
+4 13 3				lightblue
+12 11 19				lightblue
+18 17 23				lightblue
+
+7 0 21				lightblue		# Bottom triangles
+1 2 8				lightblue
+9 10 14				lightblue
+15 16 20				lightblue
+end faces

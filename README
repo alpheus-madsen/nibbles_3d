@@ -1,0 +1,14 @@
+==================================================
+   NIBBLES 3D -- A SIMPLE PYTHON 3D GAME ENGINE
+==================================================
+
+This is a simple 3D Game Engine, written in Python and using the PyGame
+game library for graphics and keyboard/mouse controls.  Due to various
+constraints, I haven't worked on the engine for some time.
+
+A more detailed explanation of the code, and its various modules, can
+be found in "nibbles3d.pdf", or alternatively the source of this file,
+"nibbles3d.tex".
+
+Note that this code is covered by an MIT License.  See LICENSE for more
+details.
