@@ -10,5 +10,14 @@ A more detailed explanation of the code, and its various modules, can
 be found in "nibbles3d.pdf", or alternatively the source of this file,
 "nibbles3d.tex".
 
+If you wish to try the demo, note that you need to press "f" or "F"
+(which stands for "floating camera mode").  The "worm" functions
+aren't yet implemented.  Once you are in "floating camera mode",
+you can navigate using the mouse by clicking in the various regions--
+up, down, left and right translate the camera, center up goes forward,
+and center back goes backward.  The regions surrounding the center
+twist the camera clockwise or counter-clockwise.  (Note that the mouse
+cursor changes to indicate what the different motions will be.)
+
 Note that this code is covered by an MIT License.  See LICENSE for more
 details.
