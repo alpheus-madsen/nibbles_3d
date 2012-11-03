@@ -189,11 +189,7 @@ class position(movable):
 
       pygame.draw.line(camera.film, egacolor['blue'],
             (upAxis.x, upAxis.y), (centerPt.x, centerPt.y))
-      try:
-         pygame.draw.circle(camera.film, egacolor['blue'], (int(centerPt.x), int(centerPt.y)), 10)
-      except Exception, e:
-         print 'This is it!'
-         raise e
+      pygame.draw.circle(camera.film, egacolor['blue'], (int(centerPt.x), int(centerPt.y)), 10)
       pygame.draw.line(camera.film, egacolor['green'],
             (fwdAxis.x, fwdAxis.y), (centerPt.x, centerPt.y))
       pygame.draw.line(camera.film, egacolor['red'],
