@@ -6,6 +6,10 @@ This is a simple 3D Game Engine, written in Python and using the PyGame
 game library for graphics and keyboard/mouse controls.  Due to various
 constraints, I haven't worked on the engine for some time.
 
+To run the demo, make sure python-pygame is installed, and run
+
+    python II-wormsegments.py
+
 A more detailed explanation of the code, and its various modules, can
 be found in "nibbles3d.pdf", or alternatively the source of this file,
 "nibbles3d.tex".
@@ -19,5 +23,6 @@ and center back goes backward.  The regions surrounding the center
 twist the camera clockwise or counter-clockwise.  (Note that the mouse
 cursor changes to indicate what the different motions will be.)
 
-Note that this code is covered by an MIT License.  See LICENSE for more
+
+This code is covered by an MIT License.  See LICENSE for more
 details.
