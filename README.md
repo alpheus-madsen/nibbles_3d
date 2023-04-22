@@ -4,15 +4,20 @@
 
 This is a simple 3D Game Engine, written in Python and using the PyGame
 game library for graphics and keyboard/mouse controls.  Due to various
-constraints, I haven't worked on the engine for some time.
+constraints, I haven't worked on the engine for some time.  It would take
+some work to get it up and running again!
 
-To run the demo, make sure python-pygame is installed, and run
+To run the demo, make sure python-pygame is installed, cross your fingers,
+and run
 
     python II-wormsegments.py
 
 A more detailed explanation of the code, and its various modules, can
-be found in "nibbles3d.pdf", or alternatively the source of this file,
-"nibbles3d.tex".
+be found in
+
+    nibbles3d.pdf
+
+or alternatively the source of this file, "nibbles3d.tex".
 
 If you wish to try the demo, note that you need to press "f" or "F"
 (which stands for "floating camera mode").  The "worm" functions
